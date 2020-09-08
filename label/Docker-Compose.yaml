@@ -1,0 +1,29 @@
+version: '3.4'
+services:
+  api:
+    image: ${docker_hub_id}/label_api:${build_number}
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      - DatabaseSettings:CollectionName=labels
+      - DatabaseSettings:ConnectionString=mongodb://${db_admin_username}:${db_admin_password}@label_db:${db_host_port}/?authSource=admin
+      - DatabaseSettings:DatabaseName=labelsdb
+      - Auth0Settings:AppDomain=${auth0_app_domain}
+      - Auth0Settings:Identifier=${auth0_indetifier}
+    depends_on:
+        - label_db
+  db:
+    image: mongo:latest
+    volumes:
+      -  labeldb:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${db_admin_username}
+      - MONGO_INITDB_ROOT_PASSWORD=${db_admin_password}
+    ports:
+      - "27017:27017"
+volumes:
+  labeldb:

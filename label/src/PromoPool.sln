@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30320.27
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PromoPool.LabelAPI", "PromoPool.LabelAPI\PromoPool.LabelAPI.csproj", "{C7B29E37-F924-4A88-B16F-14011BBB3B1A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PromoPool.LabelAPI.Tests", "PromoPool.LabelAPI.Tests\PromoPool.LabelAPI.Tests.csproj", "{D7DA3032-523E-4773-A567-FE951900B9AA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C7B29E37-F924-4A88-B16F-14011BBB3B1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7B29E37-F924-4A88-B16F-14011BBB3B1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7B29E37-F924-4A88-B16F-14011BBB3B1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7B29E37-F924-4A88-B16F-14011BBB3B1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7DA3032-523E-4773-A567-FE951900B9AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7DA3032-523E-4773-A567-FE951900B9AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7DA3032-523E-4773-A567-FE951900B9AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7DA3032-523E-4773-A567-FE951900B9AA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {23028E9E-B57F-4130-AE10-257D50CDB6FE}
+	EndGlobalSection
+EndGlobal
