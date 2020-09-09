@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using PromoPool.LabelAPI.Exceptions;
 using PromoPool.LabelAPI.Managers;
 using PromoPool.LabelAPI.Models;
 using PromoPool.LabelAPI.Services;
