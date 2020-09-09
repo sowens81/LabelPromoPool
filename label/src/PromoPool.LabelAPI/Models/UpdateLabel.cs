@@ -1,9 +1,16 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace PromoPool.LabelAPI.Models
 {
-    public class NewLabel
+    public class UpdateLabel
     {
+        [Required(ErrorMessage = "Id is required!")]
+        public string Id { get; set; }
+
         [Required(ErrorMessage = "Name is required!")]
         public string Name { get; set; }
 
@@ -19,7 +26,6 @@ namespace PromoPool.LabelAPI.Models
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Address is required!")]
-        public RequestAddress Address { get; set; }
-
+        public Address Address { get; set; }
     }
 }

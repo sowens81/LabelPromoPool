@@ -70,7 +70,7 @@ namespace PromoPool.LabelAPI.UnitTests.Controllers
                 PhoneNumber = "+44 (0) 7427 66 09 03",
                 Email = "email@email.com",
                 Url = "http://www.domain.com",
-                Address = new NewAddress()
+                Address = new RequestAddress()
                 {
                     AddressLine1 = "Addessline 1",
                     AddressLine2 = "Address Line 2",
@@ -163,7 +163,7 @@ namespace PromoPool.LabelAPI.UnitTests.Controllers
                 PhoneNumber = "+44 (0) 7427 66 09 03",
                 Email = "email@email.com",
                 Url = "http://www.domain.com",
-                Address = new NewAddress()
+                Address = new RequestAddress()
                 {
                     AddressLine1 = "Addessline 1",
                     AddressLine2 = "Address Line 2",
@@ -196,7 +196,7 @@ namespace PromoPool.LabelAPI.UnitTests.Controllers
                 PhoneNumber = "",
                 Email = "",
                 Url = "",
-                Address = new NewAddress()
+                Address = new RequestAddress()
                 {
                     AddressLine1 = "",
                     AddressLine2 = "",
@@ -222,7 +222,7 @@ namespace PromoPool.LabelAPI.UnitTests.Controllers
                 PhoneNumber = "+44 (0) 7427 66 09 03",
                 Email = "email@email.com",
                 Url = "http://www.domain.com",
-                Address = new NewAddress()
+                Address = new RequestAddress()
                 {
                     AddressLine1 = "Addessline 1",
                     AddressLine2 = "Address Line 2",

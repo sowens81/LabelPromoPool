@@ -2,7 +2,7 @@
 
 namespace PromoPool.LabelAPI.Models
 {
-    public class NewAddress
+    public class RequestAddress
     {
         [Required]
         public string AddressLine1 { get; set; }
