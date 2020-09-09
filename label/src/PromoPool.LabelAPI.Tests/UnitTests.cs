@@ -1,11 +1,12 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using PromoPool.LabelAPI.Controllers;
 using PromoPool.LabelAPI.Exceptions;
-using PromoPool.LabelAPI.Managers;
+using PromoPool.LabelAPI.Managers; 
 using PromoPool.LabelAPI.Managers.Implementations;
 using PromoPool.LabelAPI.Models;
 using PromoPool.LabelAPI.Services;
@@ -295,6 +296,32 @@ namespace PromoPool.LabelAPI.Tests
 
             Assert.IsNotNull(retval);
             Assert.AreEqual(201, retval.StatusCode);
+        }
+
+        [TestMethod]
+        public async Task LabelController_AddLabel_Given_NewLabel_ModelState_Not_Valid_Return_400_BadRequest()
+        {
+            var label = new NewLabel()
+            {
+                Name = "",
+                PhoneNumber = "",
+                Email = "",
+                Url = "",
+                Address = new NewAddress()
+                {
+                    AddressLine1 = "",
+                    AddressLine2 = "",
+                    AddressLine3 = "Address Line 3",
+                    City = "",
+                    Locality = "",
+                    PostalCode = "",
+                    Country = ""
+                }
+            };
+
+            var retval = await _labelController.AddLabelAsync(label);
+
+            Assert.IsInstanceOfType(retval, typeof(BadRequestResult));
         }
 
         [TestMethod]
