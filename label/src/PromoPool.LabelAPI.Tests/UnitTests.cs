@@ -13,6 +13,7 @@ using PromoPool.LabelAPI.Services;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
+using PromoPool.LabelAPI.Services.Implementations;
 
 namespace PromoPool.LabelAPI.Tests
 {
@@ -34,7 +35,7 @@ namespace PromoPool.LabelAPI.Tests
             labelManager = new Mock<ILabelManager>();
             logger = new Mock<ILogger<LabelController>>();
             _labelManager = new LabelManager(mongoDBPersistance.Object);
-            _labelController = new LabelController(labelManager.Object, logger.Object);
+            _labelController = new LabelController(labelManager.Object, logger.Object, new Validation());
 
         }
         #endregion
@@ -255,6 +256,7 @@ namespace PromoPool.LabelAPI.Tests
 
             var retval =  await _labelController.GetLabelsAsync() as NotFoundResult;
 
+            
             Assert.AreEqual(404, retval.StatusCode);
         }
 

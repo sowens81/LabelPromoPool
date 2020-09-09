@@ -20,7 +20,7 @@ namespace PromoPool.LabelAPI.Managers.Implementations
         {
             var labels = await mongoDBPersistance.FindAllLabelsAsync();
 
-            if (labels?.Any() == true )
+            if ( labels != null  && labels.Any() )
             {
                 return labels;
             }

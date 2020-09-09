@@ -22,26 +22,12 @@ namespace PromoPool.LabelAPI.Services.Implementations
 
         public async Task<IEnumerable<Label>> FindAllLabelsAsync()
         {
-            var labels = await _collection.Find(p => true).ToListAsync();
-
-            if (labels.Count > 0)
-            {
-                return labels;   
-            }
-
-            return null;
+            return await _collection.Find(p => true)?.ToListAsync();
         }
 
         public async Task<Label> FindLabelByIdAsync(Guid id)
         { 
-            var label = await _collection.Find<Label>(label => label.Id == id).SingleAsync();
-
-            if (label != null)
-            {
-                return label;
-            }
-
-            return null;
+            return await _collection.Find<Label>(label => label.Id == id)?.SingleAsync();
         }
 
         public async Task<string> InsertOneLabelAsync(Label label)

@@ -67,7 +67,8 @@ namespace PromoPool.LabelAPI
 
             services.AddScoped<ILabelManager, LabelManager >();
             services.AddScoped<IMongoDBPersistance, MongoDBPersistance>();
-            
+            services.AddScoped<IValidation, Validation>();
+
             services.AddApiVersioning(o => {
                 o.ReportApiVersions = true;
                 o.AssumeDefaultVersionWhenUnspecified = true;

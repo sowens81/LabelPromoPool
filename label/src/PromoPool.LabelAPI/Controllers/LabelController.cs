@@ -5,6 +5,7 @@ using Microsoft.Extensions.Logging;
 using PromoPool.LabelAPI.Exceptions;
 using PromoPool.LabelAPI.Managers;
 using PromoPool.LabelAPI.Models;
+using PromoPool.LabelAPI.Services;
 using System;
 using System.Threading.Tasks;
 
@@ -18,13 +19,15 @@ namespace PromoPool.LabelAPI.Controllers
     {
         private readonly ILabelManager labelManager;
         private readonly ILogger logger;
+        private readonly IValidation validation;
 
-        public LabelController(ILabelManager labelManager,ILogger<LabelController> logger)
+        public LabelController(ILabelManager labelManager,ILogger<LabelController> logger, IValidation validation)
         {
             this.labelManager = labelManager;
             this.logger = logger;
-
+            this.validation = validation;
         }
+
 
         [ApiVersion("1.0")]
         [HttpGet]
@@ -59,24 +62,21 @@ namespace PromoPool.LabelAPI.Controllers
         {
             logger.LogInformation($"GetLabel id: {id} - Resource Requested.");
 
-            if (string.IsNullOrEmpty(id))
+            
+            if (validation.ValidateId(id))
             {
-                throw new MissingIdException("Id is null or empty", nameof(id));
+                var label = await labelManager.GetLabelByIdAsync(id);
+
+                if (label != null)
+                {
+                    return Ok(label);
+                }
+  
             }
 
-            if (!Guid.TryParse(id, out _))
-            {
-                throw new MismatchIdException("Id is not in a Guid format", nameof(id));
-            }
+            return NotFound();
 
-            var label = await labelManager.GetLabelByIdAsync(id);
 
-            if (label == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(label);
         }
 
         [ApiVersion("1.0")]
@@ -88,27 +88,28 @@ namespace PromoPool.LabelAPI.Controllers
         [Authorize]
         public async Task<IActionResult> AddLabelAsync(NewLabel newLabel)
         {
-            if (newLabel == null)
-            {
-                throw new ArgumentException("No label", nameof(newLabel));
-            }
-
             logger.LogInformation($"AddLabel Body: {newLabel} - Resource Requested.");
-            if(ModelState.IsValid)
-            {
-                var id = await labelManager.InsertLabelAsync(newLabel);
 
-                if (id == null)
+            if (validation.ValidateNewLabelModel(newLabel))
+            {
+                if (ModelState.IsValid)
                 {
-                    return BadRequest();
-                }
+                    var id = await labelManager.InsertLabelAsync(newLabel);
 
-                return Created(id, id);
+                    if (id != null)
+                    {
+                        return Created(id, id);
+                    }
+                }
+                else
+                {
+                    return BadRequest(ModelState);
+                }
             }
-            else
-            {
-                return BadRequest(ModelState);
-            }   
+
+            return BadRequest();
+
+
         }
 
         
