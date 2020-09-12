@@ -238,6 +238,10 @@ appsettings.Development.json
 # OSX Temp files
 *.DS_Store
 
+# Db Folders
+*_db
+**/*_db
+
 #####
 # End of core ignore list, below put you custom 'per project' settings (patterns or path)
 #####
