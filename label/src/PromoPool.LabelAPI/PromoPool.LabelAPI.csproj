@@ -1,11 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
-
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UserSecretsId>473cb009-9b3f-4646-b5f4-08edb2ab07db</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <ProjectGuid>{C98BEF3D-C54C-4BC2-B124-AD97E89F6FE9}</ProjectGuid>
   </PropertyGroup>
-
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.5.1" />
@@ -15,7 +14,6 @@
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.7" />
     <PackageReference Include="Swashbuckle.AspNetCore.Filters" Version="5.1.2" />
   </ItemGroup>
-
   <ItemGroup>
     <Folder Include="Services\Implementations\" />
     <Folder Include="Settings\" />
@@ -23,6 +21,4 @@
     <Folder Include="Exceptions\" />
     <Folder Include="Requirements\" />
   </ItemGroup>
-
-
 </Project>
