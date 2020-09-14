@@ -37,21 +37,21 @@ jobs:
       - name: Cache SonarCloud packages
         uses: actions/cache@v1
         with:
-          path: ~/sonar/cache
+          path: ~\sonar\cache
           key: ${{ runner.os }}-sonar
           restore-keys: ${{ runner.os }}-sonar
       - name: Cache SonarCloud scanner
         id: cache-sonar-scanner
         uses: actions/cache@v1
         with:
-          path: ./.sonar/scanner
+          path: .\.sonar\scanner
           key: ${{ runner.os }}-sonar-scanner
           restore-keys: ${{ runner.os }}-sonar-scanner
       - name: Install SonarCloud scanner
         if: steps.cache-sonar-scanner.outputs.cache-hit != 'true'
         shell: powershell
         run: |
-          New-Item -Path ./.sonar/scanner -ItemType Directory
+          New-Item -Path .\.sonar\scanner -ItemType Directory
           dotnet tool update dotnet-sonarscanner --tool-path ./.sonar/scanner
       - name: Build and analyze
         env:
@@ -59,9 +59,9 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         shell: powershell
         run: |
-          ./.sonar/scanner/dotnet-sonarscanner begin /k:"sowens81_LabelPromoPool" /o:"sowens81" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
+          .\.sonar\scanner\dotnet-sonarscanner begin /k:"sowens81_LabelPromoPool" /o:"sowens81" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
           dotnet build ./label/src/PromoPool.LabelAPI/PromoPool.LabelAPI.csproj --configuration Release
-          ./.sonar/scannerdotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
+          .\.sonar\scannerdotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
 
     release-package-container:
       name: release-package-container
