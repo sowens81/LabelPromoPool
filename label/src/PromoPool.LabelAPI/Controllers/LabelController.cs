@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace PromoPool.LabelAPI.Controllers
 {
     [ApiVersion("1.0")]
-    [Route("api/v{v:apiVersion}/labels")]
+    [Route("api/v{v:apiVersion}/label")]
     [ApiController]
 
     public class LabelController : ControllerBase
@@ -30,10 +30,10 @@ namespace PromoPool.LabelAPI.Controllers
 
         [ApiVersion("1.0")]
         [HttpGet]
-        [HttpGet]
         [ProducesResponseType(typeof(Label), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [Produces("application/json")]
         [Authorize("read:labels")]
         public async Task<IActionResult> GetLabelsAsync()
@@ -56,7 +56,7 @@ namespace PromoPool.LabelAPI.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [Produces("application/json")]
-        [Authorize("read:label")]
+        [Authorize]
         public async Task<IActionResult> GetLabelByIdAsync(string id)
         {
             logger.LogInformation($"GetLabel id: {id} - Resource Requested.");
@@ -84,7 +84,7 @@ namespace PromoPool.LabelAPI.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [Produces("application/json")]
-        [Authorize("post:addlabel")]
+        [Authorize]
         public async Task<IActionResult> AddLabelAsync(NewLabel newLabel)
         {
             logger.LogInformation($"AddLabel Body: {newLabel} - Resource Requested.");
