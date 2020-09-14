@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
@@ -17,7 +15,8 @@ using PromoPool.LabelAPI.Services;
 using PromoPool.LabelAPI.Services.Implementations;
 using PromoPool.LabelAPI.Settings;
 using PromoPool.LabelAPI.Settings.Implementations;
-using Swashbuckle.AspNetCore.Filters;
+using System;
+using System.Collections.Generic;
 
 namespace PromoPool.LabelAPI
 {
