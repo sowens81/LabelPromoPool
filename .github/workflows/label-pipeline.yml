@@ -26,7 +26,7 @@ jobs:
       - name: .Net Core - Build Source
         run: dotnet build ./label/src/PromoPool.LabelAPI/PromoPool.LabelAPI.csproj --configuration Release --no-restore
       - name: .Net Core - Run Unit-Tests
-        run: dotnet test ./label/src/PromoPool.LabelAPI.Tests/PromoPool.LabelAPI.Tests.csproj --configuration Release --no-restore --no-build --verbosity normal
+        run: dotnet test ./label/src/PromoPool.sln --configuration Release --no-restore --no-build --verbosity normal
       - name: .Net Core - Generate Coverage Report
         run: dotnet test ./label/src/PromoPool.LabelAPI.Tests/PromoPool.LabelAPI.Tests.csproj /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:CoverletOutputFormat=lcov
       - name: Publish Coverage To coveralls.io
