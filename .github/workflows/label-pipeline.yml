@@ -26,14 +26,14 @@ jobs:
       - name: .Net Core - Build Source
         run: dotnet build ./label/src/PromoPool.LabelAPI/PromoPool.LabelAPI.csproj --configuration Release --no-restore
       - name: .Net Core - Run Unit-Tests
-        run: dotnet test ./label/src/PromoPool.sln --configuration Release --no-restore --no-build --verbosity normal
+        run: dotnet test ./label/src/PromoPool.LabelAPI.UnitTests/PromoPool.LabelAPI.UnitTests.csproj --configuration Release --no-restore --no-build --verbosity normal
       - name: .Net Core - Generate Coverage Report
-        run: dotnet test ./label/src/PromoPool.LabelAPI.Tests/PromoPool.LabelAPI.Tests.csproj /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:CoverletOutputFormat=lcov
+        run: dotnet test ./label/src/PromoPool.LabelAPI.UnitTests/PromoPool.LabelAPI.UnitTests.csproj /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:CoverletOutputFormat=lcov
       - name: Publish Coverage To coveralls.io
         uses: coverallsapp/github-action@v1.0.1
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          path-to-lcov: ./label/src/PromoPool.LabelAPI.Tests/TestResults/coverage.info
+          path-to-lcov: ./label/src/PromoPool.LabelAPI.UnitTests/TestResults/coverage.info
       - name: Cache SonarCloud packages
         uses: actions/cache@v1
         with:
@@ -61,7 +61,7 @@ jobs:
         run: |
           ./.sonar/scanner/dotnet-sonarscanner begin /k:"sowens81_LabelPromoPool" /o:"sowens81" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
           dotnet build ./label/src/PromoPool.LabelAPI/PromoPool.LabelAPI.csproj --configuration Release
-          ./.sonar/scanner/dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
+          ./.sonar/scannerdotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
 
     release-package-container:
       name: release-package-container

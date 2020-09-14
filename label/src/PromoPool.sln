@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30320.27
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PromoPool.LabelAPI", "PromoPool.LabelAPI\PromoPool.LabelAPI.csproj", "{7F7A5298-C51E-4A13-A95E-AE2C4989DE1B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PromoPool.LabelAPI.UnitTests", "PromoPool.LabelAPI.Tests\PromoPool.LabelAPI.UnitTests.csproj", "{D7DA3032-523E-4773-A567-FE951900B9AA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PromoPool.LabelAPI.UnitTests", "PromoPool.LabelAPI.UnitTests\PromoPool.LabelAPI.UnitTests.csproj", "{D7DA3032-523E-4773-A567-FE951900B9AA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
