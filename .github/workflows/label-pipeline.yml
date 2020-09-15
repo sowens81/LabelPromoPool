@@ -23,7 +23,7 @@ jobs:
           dotnet-version: 3.1.301
       - name: Fix Visual Studio Project Guid
         shell: powershell
-        run: ./scipts/AddDotNetProjectGuid.ps1 -filePath "./label/src/PromoPool.LabelAPI/PromoPool.LabelAPI.csproj"
+        run: ./scripts/AddDotNetProjectGuid.ps1 -filePath "./label/src/PromoPool.LabelAPI/PromoPool.LabelAPI.csproj"
       - name: .Net Core - Install Dependencies
         run: dotnet restore ./label/src/PromoPool.LabelAPI/PromoPool.LabelAPI.csproj
       - name: .Net Core - Build Source
