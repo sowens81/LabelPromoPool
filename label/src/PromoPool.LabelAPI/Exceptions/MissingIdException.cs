@@ -7,6 +7,7 @@ namespace PromoPool.LabelAPI.Exceptions
     public class MissingIdException : ArgumentException
     {
         public MissingIdException(string message, string parameter) : base(message, parameter)
-        { }
+        {
+        }
     }
 }
