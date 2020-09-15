@@ -68,17 +68,17 @@ jobs:
         - name: Fix Visual Studio Project Guid
           shell: powershell
           run: ./scripts/AddDotNetProjectGuid.ps1 -filePath "./label/src/PromoPool.LabelAPI/PromoPool.LabelAPI.csproj"
+        - name: .Net Core - Test Code Coverage
+          run: dotnet test ./label/src/PromoPool.LabelAPI.UnitTests/PromoPool.LabelAPI.UnitTests.csproj /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
         - name: Build and analyze
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
             SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           shell: powershell
           run: |
-            .\.sonar\scanner\dotnet-sonarscanner begin /k:"sowens81_LabelPromoPool" /o:"sowens81" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
-            dotnet restore ./label/src/PromoPool.LabelAPI/PromoPool.LabelAPI.csproj
+            .\.sonar\scanner\dotnet-sonarscanner begin /k:"sowens81_LabelPromoPool" /o:"sowens81" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths=./label/src/PromoPool.LabelAPI.UnitTests/coverage.opencover.xml
             dotnet build ./label/src/PromoPool.LabelAPI/PromoPool.LabelAPI.csproj --configuration Release
-            dotnet test ./label/src/PromoPool.LabelAPI.UnitTests/PromoPool.LabelAPI.UnitTests.csproj /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
-            .\.sonar\scanner\dotnet-sonarscanner /d:sonar.cs.opencover.reportsPaths=./label/src/PromoPool.LabelAPI.UnitTests/coverage.opencover.xml end /d:sonar.login="${{ secrets.SONAR_TOKEN }}" 
+            .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}" 
 
     release-package-container:
       name: release-package-container
