@@ -40,6 +40,9 @@ jobs:
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: 3.1.301
+      - name: Fix Dotnet Project Guid
+        run: ./scripts/AddDotNetProjectGuid.ps1 -filePath ./label/src/PromoPool.LabelAPI/PromoPool.LabelAPI.csproj
+        shell: powershell
       - name: .Net Core - Install Dependencies
         run: dotnet restore ./label/src/PromoPool.LabelAPI/PromoPool.LabelAPI.csproj
       - name: .Net Core - Build Source
