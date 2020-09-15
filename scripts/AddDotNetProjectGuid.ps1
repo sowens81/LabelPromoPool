@@ -45,11 +45,14 @@ function Test-FileExists
         [string]$filePath
     )
 
-    if (Test-Path $filePath -PathType Leaf)
-    {
-        return $filePath
+    try {
+        Test-Path $filePath -PathType Leaf
     }
-    return $null
+    catch {
+        return ""
+    }
+    
+    return $filePath   
 }
 
 function AddGuidToProject
@@ -86,7 +89,7 @@ $guid = New-Guid
 
 if(Test-IsGuid -objectGuid $guid)
 {
-    if(Test-FileExists -filePath $filePath)
+    if($filePath | Test-Path )
     {
         Write-Host(AddGuidToProject -objectGuid $guid -filePath $filePath)
     }
