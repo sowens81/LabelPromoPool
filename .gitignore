@@ -242,6 +242,9 @@ appsettings.Development.json
 *_db
 **/*_db
 
+# Code Coverage
+**/TestResults
+
 #####
 # End of core ignore list, below put you custom 'per project' settings (patterns or path)
 #####

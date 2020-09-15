@@ -1,0 +1,987 @@
+{
+  "PromoPool.ArtistAPI.dll": {
+    "/Users/steve/OneDrive/GIT/LabelPromoPool/artist/src/PromoPool.ArtistAPI/Program.cs": {
+      "PromoPool.ArtistAPI.Program": {
+        "System.Void PromoPool.ArtistAPI.Program::Main(System.String[])": {
+          "Lines": {
+            "9": 0,
+            "10": 0,
+            "11": 0
+          },
+          "Branches": []
+        },
+        "Microsoft.Extensions.Hosting.IHostBuilder PromoPool.ArtistAPI.Program::CreateHostBuilder(System.String[])": {
+          "Lines": {
+            "14": 0,
+            "15": 0,
+            "16": 0,
+            "17": 0,
+            "18": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/Users/steve/OneDrive/GIT/LabelPromoPool/artist/src/PromoPool.ArtistAPI/Startup.cs": {
+      "PromoPool.ArtistAPI.Startup": {
+        "Microsoft.Extensions.Configuration.IConfiguration PromoPool.ArtistAPI.Startup::get_Configuration()": {
+          "Lines": {
+            "30": 0
+          },
+          "Branches": []
+        },
+        "System.Void PromoPool.ArtistAPI.Startup::ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)": {
+          "Lines": {
+            "33": 0,
+            "34": 0,
+            "35": 0,
+            "36": 0,
+            "37": 0,
+            "38": 0,
+            "39": 0,
+            "40": 0,
+            "41": 0,
+            "42": 0,
+            "43": 0,
+            "44": 0,
+            "45": 0,
+            "47": 0,
+            "48": 0,
+            "50": 0,
+            "51": 0,
+            "53": 0,
+            "54": 0,
+            "55": 0,
+            "57": 0,
+            "59": 0,
+            "60": 0,
+            "61": 0,
+            "62": 0,
+            "63": 0,
+            "64": 0,
+            "65": 0,
+            "66": 0,
+            "67": 0,
+            "68": 0,
+            "69": 0,
+            "70": 0,
+            "71": 0,
+            "72": 0,
+            "73": 0,
+            "74": 0,
+            "75": 0,
+            "76": 0,
+            "77": 0,
+            "78": 0,
+            "79": 0,
+            "80": 0,
+            "81": 0,
+            "82": 0,
+            "83": 0,
+            "84": 0,
+            "85": 0,
+            "86": 0,
+            "87": 0,
+            "88": 0,
+            "89": 0,
+            "90": 0,
+            "91": 0,
+            "92": 0,
+            "93": 0,
+            "94": 0,
+            "95": 0,
+            "96": 0,
+            "97": 0,
+            "98": 0,
+            "99": 0,
+            "100": 0,
+            "101": 0,
+            "102": 0,
+            "103": 0,
+            "104": 0,
+            "105": 0,
+            "107": 0,
+            "108": 0,
+            "109": 0,
+            "111": 0,
+            "112": 0,
+            "113": 0,
+            "114": 0,
+            "115": 0,
+            "117": 0,
+            "118": 0,
+            "119": 0,
+            "120": 0,
+            "121": 0,
+            "122": 0,
+            "124": 0,
+            "125": 0,
+            "126": 0,
+            "127": 0,
+            "128": 0,
+            "130": 0,
+            "133": 0
+          },
+          "Branches": [
+            {
+              "Line": 126,
+              "Offset": 14,
+              "EndOffset": 16,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 126,
+              "Offset": 14,
+              "EndOffset": 38,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 127,
+              "Offset": 57,
+              "EndOffset": 59,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 127,
+              "Offset": 57,
+              "EndOffset": 81,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void PromoPool.ArtistAPI.Startup::Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)": {
+          "Lines": {
+            "136": 0,
+            "137": 0,
+            "138": 0,
+            "139": 0,
+            "140": 0,
+            "142": 0,
+            "143": 0,
+            "144": 0,
+            "145": 0,
+            "147": 0,
+            "149": 0,
+            "150": 0,
+            "151": 0,
+            "152": 0,
+            "154": 0,
+            "156": 0,
+            "158": 0,
+            "160": 0,
+            "162": 0,
+            "164": 0,
+            "165": 0,
+            "166": 0,
+            "167": 0,
+            "168": 0
+          },
+          "Branches": [
+            {
+              "Line": 137,
+              "Offset": 9,
+              "EndOffset": 11,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 137,
+              "Offset": 9,
+              "EndOffset": 20,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 142,
+              "Offset": 26,
+              "EndOffset": 28,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 142,
+              "Offset": 26,
+              "EndOffset": 36,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 142,
+              "Offset": 39,
+              "EndOffset": 41,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 142,
+              "Offset": 39,
+              "EndOffset": 55,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void PromoPool.ArtistAPI.Startup::.ctor(Microsoft.Extensions.Configuration.IConfiguration)": {
+          "Lines": {
+            "25": 0,
+            "26": 0,
+            "27": 0,
+            "28": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/Users/steve/OneDrive/GIT/LabelPromoPool/artist/src/PromoPool.ArtistAPI/Settings/Implementations/DatabaseSettings.cs": {
+      "PromoPool.ArtistAPI.Settings.Implementations.DatabaseSettings": {
+        "System.String PromoPool.ArtistAPI.Settings.Implementations.DatabaseSettings::get_CollectionName()": {
+          "Lines": {
+            "5": 0
+          },
+          "Branches": []
+        },
+        "System.String PromoPool.ArtistAPI.Settings.Implementations.DatabaseSettings::get_ConnectionString()": {
+          "Lines": {
+            "6": 0
+          },
+          "Branches": []
+        },
+        "System.String PromoPool.ArtistAPI.Settings.Implementations.DatabaseSettings::get_DatabaseName()": {
+          "Lines": {
+            "7": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/Users/steve/OneDrive/GIT/LabelPromoPool/artist/src/PromoPool.ArtistAPI/Services/Implementations/MongoDBPersistance.cs": {
+      "PromoPool.ArtistAPI.Services.Implementations.MongoDBPersistance": {
+        "System.Void PromoPool.ArtistAPI.Services.Implementations.MongoDBPersistance::.ctor(PromoPool.ArtistAPI.Settings.IDatabaseSettings)": {
+          "Lines": {
+            "14": 0,
+            "15": 0,
+            "17": 0,
+            "19": 0,
+            "20": 0,
+            "21": 0
+          },
+          "Branches": []
+        }
+      },
+      "PromoPool.ArtistAPI.Services.Implementations.MongoDBPersistance/<FindAllArtistsAsync>d__2": {
+        "System.Void PromoPool.ArtistAPI.Services.Implementations.MongoDBPersistance/<FindAllArtistsAsync>d__2::MoveNext()": {
+          "Lines": {
+            "24": 0,
+            "25": 0,
+            "26": 0
+          },
+          "Branches": [
+            {
+              "Line": 25,
+              "Offset": 93,
+              "EndOffset": 95,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 25,
+              "Offset": 93,
+              "EndOffset": 99,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "PromoPool.ArtistAPI.Services.Implementations.MongoDBPersistance/<FindArtistByIdAsync>d__3": {
+        "System.Void PromoPool.ArtistAPI.Services.Implementations.MongoDBPersistance/<FindArtistByIdAsync>d__3::MoveNext()": {
+          "Lines": {
+            "29": 0,
+            "30": 0,
+            "31": 0
+          },
+          "Branches": [
+            {
+              "Line": 30,
+              "Offset": 178,
+              "EndOffset": 180,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 30,
+              "Offset": 178,
+              "EndOffset": 184,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "PromoPool.ArtistAPI.Services.Implementations.MongoDBPersistance/<InsertOneArtistAsync>d__4": {
+        "System.Void PromoPool.ArtistAPI.Services.Implementations.MongoDBPersistance/<InsertOneArtistAsync>d__4::MoveNext()": {
+          "Lines": {
+            "34": 0,
+            "35": 0,
+            "37": 0,
+            "38": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/Users/steve/OneDrive/GIT/LabelPromoPool/artist/src/PromoPool.ArtistAPI/Services/Implementations/Validation.cs": {
+      "PromoPool.ArtistAPI.Services.Implementations.Validation": {
+        "System.Boolean PromoPool.ArtistAPI.Services.Implementations.Validation::ValidateId(System.String)": {
+          "Lines": {
+            "11": 3,
+            "12": 3,
+            "13": 1,
+            "14": 1,
+            "17": 2,
+            "18": 1,
+            "19": 1,
+            "22": 1,
+            "23": 1
+          },
+          "Branches": [
+            {
+              "Line": 12,
+              "Offset": 9,
+              "EndOffset": 11,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 12,
+              "Offset": 9,
+              "EndOffset": 28,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 2
+            },
+            {
+              "Line": 17,
+              "Offset": 41,
+              "EndOffset": 43,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 1
+            },
+            {
+              "Line": 17,
+              "Offset": 41,
+              "EndOffset": 60,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 1
+            }
+          ]
+        },
+        "System.Boolean PromoPool.ArtistAPI.Services.Implementations.Validation::ValidateNewArtistModel(PromoPool.ArtistAPI.Models.NewArtist)": {
+          "Lines": {
+            "26": 5,
+            "27": 5,
+            "28": 1,
+            "29": 1,
+            "32": 4,
+            "34": 4
+          },
+          "Branches": [
+            {
+              "Line": 27,
+              "Offset": 7,
+              "EndOffset": 9,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 27,
+              "Offset": 7,
+              "EndOffset": 26,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 4
+            }
+          ]
+        }
+      }
+    },
+    "/Users/steve/OneDrive/GIT/LabelPromoPool/artist/src/PromoPool.ArtistAPI/Requirements/HasScopeHandler.cs": {
+      "PromoPool.ArtistAPI.Requirements.HasScopeHandler": {
+        "System.Threading.Tasks.Task PromoPool.ArtistAPI.Requirements.HasScopeHandler::HandleRequirementAsync(Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext,PromoPool.ArtistAPI.Requirements.HasScopeRequirement)": {
+          "Lines": {
+            "10": 0,
+            "12": 0,
+            "13": 0,
+            "16": 0,
+            "19": 0,
+            "20": 0,
+            "22": 0,
+            "23": 0
+          },
+          "Branches": [
+            {
+              "Line": 12,
+              "Offset": 42,
+              "EndOffset": 44,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 12,
+              "Offset": 42,
+              "EndOffset": 52,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 19,
+              "Offset": 111,
+              "EndOffset": 113,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 19,
+              "Offset": 111,
+              "EndOffset": 126,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 16,
+              "Offset": 16,
+              "EndOffset": 18,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 16,
+              "Offset": 16,
+              "EndOffset": 42,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    },
+    "/Users/steve/OneDrive/GIT/LabelPromoPool/artist/src/PromoPool.ArtistAPI/Requirements/HasScopeRequirement.cs": {
+      "PromoPool.ArtistAPI.Requirements.HasScopeRequirement": {
+        "System.String PromoPool.ArtistAPI.Requirements.HasScopeRequirement::get_Issuer()": {
+          "Lines": {
+            "8": 0
+          },
+          "Branches": []
+        },
+        "System.String PromoPool.ArtistAPI.Requirements.HasScopeRequirement::get_Scope()": {
+          "Lines": {
+            "9": 0
+          },
+          "Branches": []
+        },
+        "System.Void PromoPool.ArtistAPI.Requirements.HasScopeRequirement::.ctor(System.String,System.String)": {
+          "Lines": {
+            "11": 0,
+            "12": 0,
+            "13": 0,
+            "14": 0,
+            "15": 0
+          },
+          "Branches": [
+            {
+              "Line": 13,
+              "Offset": 11,
+              "EndOffset": 13,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 13,
+              "Offset": 11,
+              "EndOffset": 25,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 14,
+              "Offset": 33,
+              "EndOffset": 35,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 14,
+              "Offset": 33,
+              "EndOffset": 47,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    },
+    "/Users/steve/OneDrive/GIT/LabelPromoPool/artist/src/PromoPool.ArtistAPI/Models/Artist.cs": {
+      "PromoPool.ArtistAPI.Models.Artist": {
+        "System.Guid PromoPool.ArtistAPI.Models.Artist::get_Id()": {
+          "Lines": {
+            "17": 17
+          },
+          "Branches": []
+        },
+        "System.String PromoPool.ArtistAPI.Models.Artist::get_Name()": {
+          "Lines": {
+            "19": 0
+          },
+          "Branches": []
+        },
+        "System.String PromoPool.ArtistAPI.Models.Artist::get_ProfilePictureURL()": {
+          "Lines": {
+            "21": 0
+          },
+          "Branches": []
+        },
+        "System.String PromoPool.ArtistAPI.Models.Artist::get_BeatportUrl()": {
+          "Lines": {
+            "23": 0
+          },
+          "Branches": []
+        },
+        "System.String PromoPool.ArtistAPI.Models.Artist::get_SoundCloudUrl()": {
+          "Lines": {
+            "25": 0
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.List`1<PromoPool.ArtistAPI.Models.Label> PromoPool.ArtistAPI.Models.Artist::get_Labels()": {
+          "Lines": {
+            "27": 0
+          },
+          "Branches": []
+        },
+        "System.Void PromoPool.ArtistAPI.Models.Artist::.ctor()": {
+          "Lines": {
+            "10": 16,
+            "11": 16,
+            "12": 16,
+            "13": 16,
+            "14": 16
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/Users/steve/OneDrive/GIT/LabelPromoPool/artist/src/PromoPool.ArtistAPI/Models/Label.cs": {
+      "PromoPool.ArtistAPI.Models.Label": {
+        "System.String PromoPool.ArtistAPI.Models.Label::get_Id()": {
+          "Lines": {
+            "10": 0
+          },
+          "Branches": []
+        },
+        "System.String PromoPool.ArtistAPI.Models.Label::get_Name()": {
+          "Lines": {
+            "13": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/Users/steve/OneDrive/GIT/LabelPromoPool/artist/src/PromoPool.ArtistAPI/Models/NewArtist.cs": {
+      "PromoPool.ArtistAPI.Models.NewArtist": {
+        "System.String PromoPool.ArtistAPI.Models.NewArtist::get_Name()": {
+          "Lines": {
+            "8": 6
+          },
+          "Branches": []
+        },
+        "System.String PromoPool.ArtistAPI.Models.NewArtist::get_ProfilePictureURL()": {
+          "Lines": {
+            "12": 6
+          },
+          "Branches": []
+        },
+        "System.String PromoPool.ArtistAPI.Models.NewArtist::get_BeatportUrl()": {
+          "Lines": {
+            "16": 6
+          },
+          "Branches": []
+        },
+        "System.String PromoPool.ArtistAPI.Models.NewArtist::get_SoundCloudUrl()": {
+          "Lines": {
+            "20": 6
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/Users/steve/OneDrive/GIT/LabelPromoPool/artist/src/PromoPool.ArtistAPI/Models/UpdateArtist.cs": {
+      "PromoPool.ArtistAPI.Models.UpdateArtist": {
+        "System.String PromoPool.ArtistAPI.Models.UpdateArtist::get_Id()": {
+          "Lines": {
+            "8": 0
+          },
+          "Branches": []
+        },
+        "System.String PromoPool.ArtistAPI.Models.UpdateArtist::get_Name()": {
+          "Lines": {
+            "11": 0
+          },
+          "Branches": []
+        },
+        "System.String PromoPool.ArtistAPI.Models.UpdateArtist::get_ProfilePictureURL()": {
+          "Lines": {
+            "15": 0
+          },
+          "Branches": []
+        },
+        "System.String PromoPool.ArtistAPI.Models.UpdateArtist::get_BeatportUrl()": {
+          "Lines": {
+            "19": 0
+          },
+          "Branches": []
+        },
+        "System.String PromoPool.ArtistAPI.Models.UpdateArtist::get_SoundCloudUrl()": {
+          "Lines": {
+            "23": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/Users/steve/OneDrive/GIT/LabelPromoPool/artist/src/PromoPool.ArtistAPI/Managers/Implementations/ArtistManager.cs": {
+      "PromoPool.ArtistAPI.Managers.Implementations.ArtistManager": {
+        "System.Void PromoPool.ArtistAPI.Managers.Implementations.ArtistManager::.ctor(PromoPool.ArtistAPI.Services.IMongoDBPersistance)": {
+          "Lines": {
+            "14": 5,
+            "15": 5,
+            "16": 5,
+            "17": 5
+          },
+          "Branches": []
+        }
+      },
+      "PromoPool.ArtistAPI.Managers.Implementations.ArtistManager/<GetAllArtistsAsync>d__2": {
+        "System.Void PromoPool.ArtistAPI.Managers.Implementations.ArtistManager/<GetAllArtistsAsync>d__2::MoveNext()": {
+          "Lines": {
+            "20": 2,
+            "21": 2,
+            "23": 2,
+            "24": 1,
+            "25": 1,
+            "28": 1,
+            "29": 2
+          },
+          "Branches": [
+            {
+              "Line": 23,
+              "Offset": 151,
+              "EndOffset": 153,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 23,
+              "Offset": 151,
+              "EndOffset": 166,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            },
+            {
+              "Line": 23,
+              "Offset": 171,
+              "EndOffset": 173,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 1
+            },
+            {
+              "Line": 23,
+              "Offset": 171,
+              "EndOffset": 183,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 1
+            }
+          ]
+        }
+      },
+      "PromoPool.ArtistAPI.Managers.Implementations.ArtistManager/<GetArtistByIdAsync>d__3": {
+        "System.Void PromoPool.ArtistAPI.Managers.Implementations.ArtistManager/<GetArtistByIdAsync>d__3::MoveNext()": {
+          "Lines": {
+            "32": 2,
+            "34": 2,
+            "36": 2,
+            "37": 1,
+            "38": 1,
+            "41": 1,
+            "42": 2
+          },
+          "Branches": [
+            {
+              "Line": 36,
+              "Offset": 169,
+              "EndOffset": 171,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 36,
+              "Offset": 169,
+              "EndOffset": 176,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            }
+          ]
+        }
+      },
+      "PromoPool.ArtistAPI.Managers.Implementations.ArtistManager/<InsertArtistAsync>d__4": {
+        "System.Void PromoPool.ArtistAPI.Managers.Implementations.ArtistManager/<InsertArtistAsync>d__4::MoveNext()": {
+          "Lines": {
+            "45": 1,
+            "47": 1,
+            "48": 1,
+            "49": 1,
+            "50": 1,
+            "51": 1,
+            "52": 1,
+            "53": 1,
+            "54": 1,
+            "56": 1,
+            "58": 1,
+            "59": 1
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/Users/steve/OneDrive/GIT/LabelPromoPool/artist/src/PromoPool.ArtistAPI/Exceptions/MismatchIdException.cs": {
+      "PromoPool.ArtistAPI.Exceptions.MismatchIdException": {
+        "System.Void PromoPool.ArtistAPI.Exceptions.MismatchIdException::.ctor(System.String,System.String)": {
+          "Lines": {
+            "8": 1,
+            "9": 2
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/Users/steve/OneDrive/GIT/LabelPromoPool/artist/src/PromoPool.ArtistAPI/Exceptions/MissingIdException.cs": {
+      "PromoPool.ArtistAPI.Exceptions.MissingIdException": {
+        "System.Void PromoPool.ArtistAPI.Exceptions.MissingIdException::.ctor(System.String,System.String)": {
+          "Lines": {
+            "8": 1,
+            "9": 1,
+            "10": 1
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/Users/steve/OneDrive/GIT/LabelPromoPool/artist/src/PromoPool.ArtistAPI/Controllers/ArtistController.cs": {
+      "PromoPool.ArtistAPI.Controllers.ArtistController": {
+        "System.Void PromoPool.ArtistAPI.Controllers.ArtistController::.ctor(PromoPool.ArtistAPI.Managers.IArtistManager,Microsoft.Extensions.Logging.ILogger`1<PromoPool.ArtistAPI.Controllers.ArtistController>,PromoPool.ArtistAPI.Services.IValidation)": {
+          "Lines": {
+            "25": 11,
+            "26": 11,
+            "27": 11,
+            "28": 11,
+            "29": 11,
+            "30": 11
+          },
+          "Branches": []
+        }
+      },
+      "PromoPool.ArtistAPI.Controllers.ArtistController/<GetArtistsAsync>d__4": {
+        "System.Void PromoPool.ArtistAPI.Controllers.ArtistController/<GetArtistsAsync>d__4::MoveNext()": {
+          "Lines": {
+            "42": 3,
+            "43": 3,
+            "45": 3,
+            "47": 3,
+            "48": 2,
+            "49": 2,
+            "52": 1,
+            "54": 3
+          },
+          "Branches": [
+            {
+              "Line": 47,
+              "Offset": 185,
+              "EndOffset": 187,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 2
+            },
+            {
+              "Line": 47,
+              "Offset": 185,
+              "EndOffset": 208,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            }
+          ]
+        }
+      },
+      "PromoPool.ArtistAPI.Controllers.ArtistController/<GetArtistByIdAsync>d__5": {
+        "System.Void PromoPool.ArtistAPI.Controllers.ArtistController/<GetArtistByIdAsync>d__5::MoveNext()": {
+          "Lines": {
+            "63": 3,
+            "64": 3,
+            "67": 3,
+            "68": 1,
+            "69": 1,
+            "71": 1,
+            "72": 1,
+            "73": 1,
+            "76": 0,
+            "78": 0,
+            "81": 1
+          },
+          "Branches": [
+            {
+              "Line": 67,
+              "Offset": 85,
+              "EndOffset": 90,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 71,
+              "Offset": 241,
+              "EndOffset": 243,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 1
+            },
+            {
+              "Line": 71,
+              "Offset": 241,
+              "EndOffset": 264,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 67,
+              "Offset": 85,
+              "EndOffset": 272,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "PromoPool.ArtistAPI.Controllers.ArtistController/<AddArtistAsync>d__6": {
+        "System.Void PromoPool.ArtistAPI.Controllers.ArtistController/<AddArtistAsync>d__6::MoveNext()": {
+          "Lines": {
+            "91": 5,
+            "92": 5,
+            "94": 5,
+            "95": 4,
+            "96": 4,
+            "97": 4,
+            "98": 4,
+            "100": 4,
+            "101": 2,
+            "102": 2,
+            "104": 2,
+            "106": 0,
+            "107": 0,
+            "109": 2,
+            "110": 2,
+            "111": 4
+          },
+          "Branches": [
+            {
+              "Line": 94,
+              "Offset": 80,
+              "EndOffset": 85,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 4
+            },
+            {
+              "Line": 96,
+              "Offset": 104,
+              "EndOffset": 109,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 4
+            },
+            {
+              "Line": 100,
+              "Offset": 263,
+              "EndOffset": 265,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 2
+            },
+            {
+              "Line": 100,
+              "Offset": 263,
+              "EndOffset": 292,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 2
+            },
+            {
+              "Line": 96,
+              "Offset": 104,
+              "EndOffset": 302,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 94,
+              "Offset": 80,
+              "EndOffset": 329,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 2
+            }
+          ]
+        }
+      }
+    }
+  }
+}
