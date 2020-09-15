@@ -76,7 +76,7 @@ jobs:
             .\.sonar\scanner\dotnet-sonarscanner begin /k:"sowens81_LabelPromoPool" /o:"sowens81" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
             dotnet restore ./label/src/PromoPool.LabelAPI/PromoPool.LabelAPI.csproj
             dotnet build ./label/src/PromoPool.LabelAPI/PromoPool.LabelAPI.csproj --configuration Release
-            dotnet test ./label/src/PromoPool.LabelAPI.UnitTests/PromoPool.LabelAPI.UnitTests.csproj --configuration Release --no-restore --no-build --verbosity normal
+            dotnet test ./label/src/PromoPool.LabelAPI.UnitTests/PromoPool.LabelAPI.UnitTests.csproj /p:CollectCoverage=true /p:CoverletOutput=coverage/ /p:CoverletOutputFormat=opencover /p:MergeWith=coverage/ — collect “Code coverage”’
             .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
 
     release-package-container:
