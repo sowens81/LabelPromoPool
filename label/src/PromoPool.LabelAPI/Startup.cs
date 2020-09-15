@@ -31,6 +31,19 @@ namespace PromoPool.LabelAPI
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowSpecificOrigin",
+                    builder =>
+                    {
+                        builder
+                        .WithOrigins("http://localhost:3000")
+                        .AllowAnyMethod()
+                        .AllowAnyHeader()
+                        .AllowCredentials();
+                    });
+            });
+
             services.Configure<DatabaseSettings>(
                 Configuration.GetSection(nameof(DatabaseSettings)));
 
@@ -101,19 +114,17 @@ namespace PromoPool.LabelAPI
                 o.DefaultApiVersion = new ApiVersion(1, 0);
             });
 
-            services.AddAuthentication(options =>
-            {
-                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            }).AddJwtBearer(options =>
-            {
-                options.Authority = appDomain;
-                options.Audience =  identifier;
-            });
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    options.Authority = appDomain;
+                    options.Audience = identifier;
+                });
 
             services.AddAuthorization(options =>
             {
-                options.AddPolicy("read:messages", policy => policy.Requirements.Add(new HasScopeRequirement("read:messages", appDomain)));
+                options.AddPolicy("read:labels", policy => policy.Requirements.Add(new HasScopeRequirement("read:labels", appDomain)));
+                options.AddPolicy("post:addlabel", policy => policy.Requirements.Add(new HasScopeRequirement("post:addlabel", appDomain)));
             });
 
             services.AddSingleton<IAuthorizationHandler, HasScopeHandler>();
@@ -143,6 +154,8 @@ namespace PromoPool.LabelAPI
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors("AllowSpecificOrigin");
 
             app.UseAuthentication();
 
