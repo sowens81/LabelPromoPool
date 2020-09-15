@@ -64,6 +64,9 @@ jobs:
           run: |
             New-Item -Path .\.sonar\scanner -ItemType Directory
             dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner
+        - name: Fix Visual Studio Project Guid
+          shell: powershell
+          run: ./scripts/AddDotNetProjectGuid.ps1 -filePath "./label/src/PromoPool.LabelAPI/PromoPool.LabelAPI.csproj"
         - name: Build and analyze
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
