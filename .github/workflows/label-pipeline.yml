@@ -21,28 +21,6 @@ jobs:
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: 3.1.301
-      - name: Cache SonarCloud packages
-        uses: actions/cache@v1
-        with:
-          path: ~\sonar\cache
-          key: ${{ runner.os }}-sonar
-          restore-keys: ${{ runner.os }}-sonar
-      - name: Cache SonarCloud scanner
-        id: cache-sonar-scanner
-        uses: actions/cache@v1
-        with:
-          path: .\.sonar\scanner
-          key: ${{ runner.os }}-sonar-scanner
-          restore-keys: ${{ runner.os }}-sonar-scanner
-      - name: Install SonarCloud scanner
-        if: steps.cache-sonar-scanner.outputs.cache-hit != 'true'
-        shell: powershell
-        run: |
-          New-Item -Path .\.sonar\scanner -ItemType Directory
-          dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner
-      - name: Fix Visual Studio Project Guid
-        shell: powershell
-        run: ./scripts/AddDotNetProjectGuid.ps1 -filePath "./label/src/PromoPool.LabelAPI/PromoPool.LabelAPI.csproj"
       - name: .Net Core - Install Dependencies
         run: dotnet restore ./label/src/PromoPool.LabelAPI/PromoPool.LabelAPI.csproj
       - name: .Net Core - Build Source
@@ -51,20 +29,49 @@ jobs:
         run: dotnet test ./label/src/PromoPool.LabelAPI.UnitTests/PromoPool.LabelAPI.UnitTests.csproj --configuration Release --no-restore --no-build --verbosity normal
       - name: .Net Core - Generate Coverage Report
         run: dotnet test ./label/src/PromoPool.LabelAPI.UnitTests/PromoPool.LabelAPI.UnitTests.csproj /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:CoverletOutputFormat=lcov
-      - name: Build and analyze
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        shell: powershell
-        run: |
-          .\.sonar\scanner\dotnet-sonarscanner begin /k:"sowens81_LabelPromoPool" /o:"sowens81" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
-          dotnet build ./label/src/PromoPool.LabelAPI/PromoPool.LabelAPI.csproj --configuration Release
-          .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
       - name: Publish Coverage To coveralls.io
         uses: coverallsapp/github-action@v1.0.1
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          path-to-lcov: ./label/src/PromoPool.LabelAPI.UnitTests/TestResults/coverage.info 
+          path-to-lcov: ./label/src/PromoPool.LabelAPI.UnitTests/TestResults/coverage.info
+    ci-build-security-test:
+      name: Build
+      runs-on: windows-latest
+      steps:
+        - uses: actions/checkout@v2
+          with:
+            fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+        - name: Cache SonarCloud packages
+          uses: actions/cache@v1
+          with:
+            path: ~\sonar\cache
+            key: ${{ runner.os }}-sonar
+            restore-keys: ${{ runner.os }}-sonar
+        - name: Cache SonarCloud scanner
+          id: cache-sonar-scanner
+          uses: actions/cache@v1
+          with:
+            path: .\.sonar\scanner
+            key: ${{ runner.os }}-sonar-scanner
+            restore-keys: ${{ runner.os }}-sonar-scanner
+        - name: Install SonarCloud scanner
+          if: steps.cache-sonar-scanner.outputs.cache-hit != 'true'
+          shell: powershell
+          run: |
+            New-Item -Path .\.sonar\scanner -ItemType Directory
+            dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner
+        - name: Fix Visual Studio Project Guid
+          shell: powershell
+          run: ./scripts/AddDotNetProjectGuid.ps1 -filePath "./label/src/PromoPool.LabelAPI/PromoPool.LabelAPI.csproj"
+        - name: Build and analyze
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+            SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          shell: powershell
+          run: |
+            .\.sonar\scanner\dotnet-sonarscanner begin /k:"sowens81_LabelPromoPool" /o:"sowens81" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
+            dotnet build ./label/src/PromoPool.LabelAPI/PromoPool.LabelAPI.csproj --configuration Release
+            .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
 
     release-package-container:
       name: release-package-container
