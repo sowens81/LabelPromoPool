@@ -113,5 +113,36 @@ namespace PromoPool.ArtistAPI.UnitTests.Managers
 
             Assert.IsTrue(Guid.TryParse(id,out _));
         }
+
+        [TestMethod]
+        public void DeleteArtistByIdAsync_Given_ID_Should_Delete_Artist()
+        {
+
+            mongoDBPersistance
+                .Setup(s => s.DeleteOneArtistAsync(It.IsAny<Guid>()))
+                .Returns(Task.FromResult(true));
+
+            string id = "123e4567-e89b-12d3-a456-426652340000";
+
+            var retval = _artistManager.DeleteArtistByIdAsync(id);
+
+            Assert.IsTrue(retval.Result);
+        }
+
+        [TestMethod]
+        public void DeleteArtistByIdAsync_Given_Unknown_ID_Should_Not_Delete_Artist()
+        {
+
+            mongoDBPersistance
+                .Setup(s => s.DeleteOneArtistAsync(It.IsAny<Guid>()))
+                .Returns(Task.FromResult(false));
+
+            string id = "123e4567-e89b-12d3-a456-426652340000";
+
+            var retval = _artistManager.DeleteArtistByIdAsync(id);
+
+            Assert.IsFalse(retval.Result);
+        }
+
     }
 }

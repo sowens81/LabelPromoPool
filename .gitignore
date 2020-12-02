@@ -205,7 +205,9 @@ $RECYCLE.BIN/
 # dotnet stuff
 project.lock.json
 appsettings.Development.json
+appsettings.json
 **/appsettings.Development.json
+**/appsettings.json
 
 # VS 2015+
 *.vc.vc.opendb

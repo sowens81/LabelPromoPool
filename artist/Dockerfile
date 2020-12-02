@@ -20,8 +20,7 @@ FROM base AS final
 ENV DatabaseSettings:CollectionName=VALUE
 ENV DatabaseSettings:ConnectionString=VALUE
 ENV DatabaseSettings:DatabaseName=VALUE
-ENV Auth0Settings:AppDomain=VALUE
-ENV Auth0Settings:Identifier=VALUE
+ENV GitHubSettings:GitRepo=VALUE
 WORKDIR /app
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "PromoPool.ArtistAPI.dll"]

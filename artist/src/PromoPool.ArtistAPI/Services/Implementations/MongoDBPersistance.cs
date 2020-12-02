@@ -37,5 +37,13 @@ namespace PromoPool.ArtistAPI.Services.Implementations
             return artist.Id.ToString();
         }
 
+        public async Task<bool> DeleteOneArtistAsync(Guid id)
+        {
+            var query = Builders<Artist>.Filter.Where(r => r.Id == id);
+            var result = await _collection.DeleteOneAsync(query);
+            return await Task.FromResult(result.DeletedCount == 1);
+            
+        }
+
     }
 }

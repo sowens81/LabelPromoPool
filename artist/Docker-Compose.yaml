@@ -9,11 +9,10 @@ services:
       - "80:80"
       - "443:443"
     environment:
+      - GitHubSettings:GitRepo=${github_repo}
       - DatabaseSettings:CollectionName=artists
       - DatabaseSettings:ConnectionString=mongodb://${db_admin_username}:${db_admin_password}@label_db:${db_host_port}/?authSource=admin
       - DatabaseSettings:DatabaseName=artistsdb
-      - Auth0Settings:AppDomain=${auth0_app_domain}
-      - Auth0Settings:Identifier=${auth0_indetifier}
     depends_on:
         - artist_db
   db:

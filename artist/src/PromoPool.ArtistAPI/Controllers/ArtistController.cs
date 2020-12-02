@@ -1,13 +1,9 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using PromoPool.ArtistAPI.Managers;
 using PromoPool.ArtistAPI.Models;
 using PromoPool.ArtistAPI.Services;
-using System;
-using System.IO;
-using System.Net.Http.Headers;
 using System.Threading.Tasks;
 
 namespace PromoPool.ArtistAPI.Controllers
@@ -37,7 +33,7 @@ namespace PromoPool.ArtistAPI.Controllers
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [Produces("application/json")]
-        [Authorize("read:artists")]
+        // [Authorize("read:artists")]
         public async Task<IActionResult> GetArtistsAsync()
         {
             logger.LogInformation($"GetArtists - Resource Requested.");
@@ -58,7 +54,7 @@ namespace PromoPool.ArtistAPI.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [Produces("application/json")]
-        [Authorize]
+        // [Authorize]
         public async Task<IActionResult> GetArtistByIdAsync(string id)
         {
             logger.LogInformation($"GetArtist id: {id} - Resource Requested.");
@@ -77,7 +73,6 @@ namespace PromoPool.ArtistAPI.Controllers
 
             return NotFound();
 
-
         }
 
         [ApiVersion("1.0")]
@@ -86,7 +81,7 @@ namespace PromoPool.ArtistAPI.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [Produces("application/json")]
-        [Authorize]
+        // [Authorize]
         public async Task<IActionResult> AddArtistAsync(NewArtist newArtist)
         {
             logger.LogInformation($"AddArtist Body: {newArtist} - Resource Requested.");
@@ -108,6 +103,34 @@ namespace PromoPool.ArtistAPI.Controllers
                 }
             }
             return BadRequest();
-        }        
+        }
+
+        [ApiVersion("1.0")]
+        [HttpDelete]
+        [ProducesResponseType(typeof(string), StatusCodes.Status202Accepted)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [Produces("application/json")]
+        // [Authorize]
+        public async Task<IActionResult> DeleteArtistByIdAsync(string id)
+        {
+            logger.LogInformation($"DeleteArtist id: {id} - Resource Requested.");
+
+
+            if (validation.ValidateId(id))
+            {
+                var artist = await artistManager.DeleteArtistByIdAsync(id);
+
+                if (artist == true)
+                {
+                    return Accepted();
+                }
+
+            }
+
+            return BadRequest();
+
+        }
+
     }
 }

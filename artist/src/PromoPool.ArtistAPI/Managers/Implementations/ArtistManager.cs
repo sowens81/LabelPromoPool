@@ -57,5 +57,13 @@ namespace PromoPool.ArtistAPI.Managers.Implementations
 
             return artistId;
         }
+
+        public async Task<bool> DeleteArtistByIdAsync(string id)
+        {
+           var deleteSuccessful = await mongoDBPersistance.DeleteOneArtistAsync(Guid.Parse(id));
+
+           return deleteSuccessful;
+        }
+
     }
 }

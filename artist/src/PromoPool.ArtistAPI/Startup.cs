@@ -50,8 +50,8 @@ namespace PromoPool.ArtistAPI
             services.AddSingleton<IDatabaseSettings>(sp =>
                 sp.GetRequiredService<IOptions<DatabaseSettings>>().Value);
             
-            var appDomain = Configuration["Auth0Settings:AppDomain"];
-            var identifier = Configuration["Auth0Settings:Identifier"];
+            // var appDomain = Configuration["Auth0Settings:AppDomain"];
+            // var identifier = Configuration["Auth0Settings:Identifier"];
             var gitRepo = Configuration["GitHubSettings:GitRepo"];
 
             services.AddControllers();
@@ -76,6 +76,7 @@ namespace PromoPool.ArtistAPI
                         Url = new Uri($"{gitRepo}/license"),
                     }
                 });
+                /*
                 c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
                     Description = "JWT Authorization header using the Bearer scheme. \r\n\r\n Enter 'Bearer' [space] and then your token in the text input below.\r\n\r\nExample: \"Bearer 12345abcdef\"",
@@ -102,6 +103,7 @@ namespace PromoPool.ArtistAPI
                         new List<string>()
                     }
                 });
+                */
             });
 
             services.AddScoped<IArtistManager, ArtistManager >();
@@ -114,6 +116,7 @@ namespace PromoPool.ArtistAPI
                 o.DefaultApiVersion = new ApiVersion(1, 0);
             });
 
+            /*
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {
@@ -129,6 +132,7 @@ namespace PromoPool.ArtistAPI
 
             services.AddSingleton<IAuthorizationHandler, HasScopeHandler>();
 
+            */
 
         }
          
@@ -157,9 +161,9 @@ namespace PromoPool.ArtistAPI
 
             app.UseCors("AllowSpecificOrigin");
 
-            app.UseAuthentication();
+            // app.UseAuthentication();
 
-            app.UseAuthorization();
+            // app.UseAuthorization();
             
             app.UseEndpoints(endpoints =>
             {
