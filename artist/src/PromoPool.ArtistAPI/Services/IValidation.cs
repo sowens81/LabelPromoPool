@@ -4,9 +4,9 @@ namespace PromoPool.ArtistAPI.Services
 {
     public interface IValidation
     {
-        bool ValidateId(string id);
+        ValidationMessage ValidateId(string id);
 
-        bool ValidateNewArtistModel(NewArtist newArtist);
+        ValidationMessage ValidateNewArtistModel(NewArtist newArtist);
 
     }
 }

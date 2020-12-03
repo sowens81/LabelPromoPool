@@ -17,7 +17,6 @@
     <Folder Include="Services\Implementations\" />
     <Folder Include="Settings\" />
     <Folder Include="Settings\Implementations\" />
-    <Folder Include="Exceptions\" />
     <Folder Include="Requirements\" />
   </ItemGroup>
 </Project>

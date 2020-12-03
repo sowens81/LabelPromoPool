@@ -4,6 +4,7 @@ using Microsoft.Extensions.Logging;
 using PromoPool.ArtistAPI.Managers;
 using PromoPool.ArtistAPI.Models;
 using PromoPool.ArtistAPI.Services;
+using System;
 using System.Threading.Tasks;
 
 namespace PromoPool.ArtistAPI.Controllers
@@ -52,6 +53,7 @@ namespace PromoPool.ArtistAPI.Controllers
         [HttpGet("{id}")]
         [ProducesResponseType(typeof(Artist), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [Produces("application/json")]
         // [Authorize]
@@ -59,8 +61,10 @@ namespace PromoPool.ArtistAPI.Controllers
         {
             logger.LogInformation($"GetArtist id: {id} - Resource Requested.");
 
-            
-            if (validation.ValidateId(id))
+            var validateId = validation.ValidateId(id);
+
+
+            if (validateId.resultValid == true)
             {
                 var artist = await artistManager.GetArtistByIdAsync(id);
 
@@ -68,10 +72,12 @@ namespace PromoPool.ArtistAPI.Controllers
                 {
                     return Ok(artist);
                 }
+
+                return NotFound();
   
             }
 
-            return NotFound();
+            return BadRequest(validateId.message);
 
         }
 
@@ -86,7 +92,9 @@ namespace PromoPool.ArtistAPI.Controllers
         {
             logger.LogInformation($"AddArtist Body: {newArtist} - Resource Requested.");
 
-            if (validation.ValidateNewArtistModel(newArtist))
+            var validateArtist = validation.ValidateNewArtistModel(newArtist);
+
+            if (validateArtist.resultValid == true)
             {
                 if (ModelState.IsValid)
                 {
@@ -102,13 +110,14 @@ namespace PromoPool.ArtistAPI.Controllers
                     return BadRequest(ModelState);
                 }
             }
-            return BadRequest();
+            return BadRequest(validateArtist.message);
         }
 
         [ApiVersion("1.0")]
         [HttpDelete]
         [ProducesResponseType(typeof(string), StatusCodes.Status202Accepted)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [Produces("application/json")]
         // [Authorize]
@@ -116,8 +125,9 @@ namespace PromoPool.ArtistAPI.Controllers
         {
             logger.LogInformation($"DeleteArtist id: {id} - Resource Requested.");
 
+            var validateId = validation.ValidateId(id);
 
-            if (validation.ValidateId(id))
+            if (validateId.resultValid == true)
             {
                 var artist = await artistManager.DeleteArtistByIdAsync(id);
 
@@ -126,9 +136,9 @@ namespace PromoPool.ArtistAPI.Controllers
                     return Accepted();
                 }
 
+                return NotFound();
             }
-
-            return BadRequest();
+            return BadRequest(validateId.message);
 
         }
 
