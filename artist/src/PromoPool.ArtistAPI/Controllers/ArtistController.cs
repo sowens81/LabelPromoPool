@@ -5,6 +5,7 @@ using PromoPool.ArtistAPI.Managers;
 using PromoPool.ArtistAPI.Models;
 using PromoPool.ArtistAPI.Services;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace PromoPool.ArtistAPI.Controllers
@@ -26,18 +27,29 @@ namespace PromoPool.ArtistAPI.Controllers
             this.validation = validation;
         }
 
-
         [ApiVersion("1.0")]
         [HttpGet]
-        [ProducesResponseType(typeof(Artist), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(IEnumerable<Artist>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [Produces("application/json")]
         // [Authorize("read:artists")]
-        public async Task<IActionResult> GetArtistsAsync()
+        public async Task<IActionResult> GetArtistsAsync(string artistname)
         {
             logger.LogInformation($"GetArtists - Resource Requested.");
+
+            if (artistname != null)
+            {
+                var artistsSearchByName = await artistManager.FindAllArtistsByNameAsync(artistname);
+
+                if (artistsSearchByName != null)
+                {
+                    return Ok(artistsSearchByName);
+                }
+
+                return NotFound();
+            }
 
             var artists = await artistManager.GetAllArtistsAsync();
 
@@ -64,7 +76,7 @@ namespace PromoPool.ArtistAPI.Controllers
             var validateId = validation.ValidateId(id);
 
 
-            if (validateId.resultValid == true)
+            if (validateId.resultValid)
             {
                 var artist = await artistManager.GetArtistByIdAsync(id);
 
@@ -94,7 +106,7 @@ namespace PromoPool.ArtistAPI.Controllers
 
             var validateArtist = validation.ValidateNewArtistModel(newArtist);
 
-            if (validateArtist.resultValid == true)
+            if (validateArtist.resultValid)
             {
                 if (ModelState.IsValid)
                 {
@@ -114,7 +126,7 @@ namespace PromoPool.ArtistAPI.Controllers
         }
 
         [ApiVersion("1.0")]
-        [HttpDelete]
+        [HttpDelete("{id}")]
         [ProducesResponseType(typeof(string), StatusCodes.Status202Accepted)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -127,11 +139,11 @@ namespace PromoPool.ArtistAPI.Controllers
 
             var validateId = validation.ValidateId(id);
 
-            if (validateId.resultValid == true)
+            if (validateId.resultValid)
             {
-                var artist = await artistManager.DeleteArtistByIdAsync(id);
+                var deleteSuccessful = await artistManager.DeleteArtistByIdAsync(id);
 
-                if (artist == true)
+                if (deleteSuccessful)
                 {
                     return Accepted();
                 }
@@ -139,6 +151,31 @@ namespace PromoPool.ArtistAPI.Controllers
                 return NotFound();
             }
             return BadRequest(validateId.message);
+
+        }
+
+        [ApiVersion("1.0")]
+        [HttpDelete]
+        [ProducesResponseType(typeof(string), StatusCodes.Status202Accepted)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [Produces("application/json")]
+        // [Authorize]
+        public async Task<IActionResult> DeleteAllArtistsAsync()
+        {
+            logger.LogInformation($"DeleteAllArtists - Resource Requested.");
+
+
+
+                var deleteSuccessful = await artistManager.DeleteAllArtistsAsync();
+
+                if (deleteSuccessful)
+                {
+                    return Accepted();
+                }
+
+                return NotFound();
 
         }
 

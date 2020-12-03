@@ -28,6 +28,18 @@ namespace PromoPool.ArtistAPI.Managers.Implementations
             return null;
         }
 
+        public async Task<IEnumerable<Artist>> FindAllArtistsByNameAsync(string artistName)
+        {
+            var artists = await mongoDBPersistance.FindAllArtistsByNameAsync(artistName);
+
+            if (artists != null && artists.Any())
+            {
+                return artists;
+            }
+
+            return null;
+        }
+
         public async Task<Artist> GetArtistByIdAsync(string id)
         {
 
@@ -63,6 +75,14 @@ namespace PromoPool.ArtistAPI.Managers.Implementations
            var deleteSuccessful = await mongoDBPersistance.DeleteOneArtistAsync(Guid.Parse(id));
 
            return deleteSuccessful;
+        }
+
+        public async Task<bool> DeleteAllArtistsAsync()
+        {
+
+            var deleteSuccessful = await mongoDBPersistance.DeleteAllArtistsAsync();
+
+            return deleteSuccessful;
         }
 
     }

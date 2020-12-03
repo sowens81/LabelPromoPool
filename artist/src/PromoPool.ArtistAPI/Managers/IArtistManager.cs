@@ -7,8 +7,10 @@ namespace PromoPool.ArtistAPI.Managers
     public interface IArtistManager
     {
         Task<IEnumerable<Artist>> GetAllArtistsAsync();
+        Task<IEnumerable<Artist>> FindAllArtistsByNameAsync(string artistName);
         Task<Artist> GetArtistByIdAsync(string id);
         Task<string> InsertArtistAsync(NewArtist newArtist);
         Task<bool> DeleteArtistByIdAsync(string id);
+        Task<bool> DeleteAllArtistsAsync();
     }
 }

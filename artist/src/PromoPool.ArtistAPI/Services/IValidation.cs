@@ -6,6 +6,8 @@ namespace PromoPool.ArtistAPI.Services
     {
         ValidationMessage ValidateId(string id);
 
+        ValidationMessage ValidateQueryString(string queryString, string queryStringPropertyName);
+
         ValidationMessage ValidateNewArtistModel(NewArtist newArtist);
 
     }

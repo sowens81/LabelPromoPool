@@ -32,6 +32,23 @@ namespace PromoPool.ArtistAPI.Services.Implementations
             };
         }
 
+        public ValidationMessage ValidateQueryString(string queryString, string queryStringPropertyName)
+        {
+            if (string.IsNullOrEmpty(queryString))
+            {
+                return new ValidationMessage()
+                {
+                    resultValid = false,
+                    message = $"queryString property: {queryStringPropertyName}, is null or empty!"
+                };
+            }
+
+            return new ValidationMessage()
+            {
+                resultValid = true
+            };
+        }
+
         public ValidationMessage ValidateNewArtistModel(NewArtist newArtist)
         {
             if (newArtist == null)

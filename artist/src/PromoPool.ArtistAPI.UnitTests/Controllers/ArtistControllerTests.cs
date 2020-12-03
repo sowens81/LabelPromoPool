@@ -3,7 +3,6 @@ using Microsoft.Extensions.Logging;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using PromoPool.ArtistAPI.Controllers;
-using PromoPool.ArtistAPI.Exceptions;
 using PromoPool.ArtistAPI.Managers;
 using PromoPool.ArtistAPI.Models;
 using PromoPool.ArtistAPI.Services.Implementations;
@@ -46,7 +45,7 @@ namespace PromoPool.ArtistAPI.UnitTests.Controllers
         }
 
         [TestMethod]
-        public void GetArtistByIdAsync_Given_Id_As_Guid_String_Should_Return_Artist()
+        public async Task GetArtistByIdAsync_Given_Id_As_Guid_String_Should_Return_Artist()
         {
             var id = Guid.NewGuid().ToString();
 
@@ -56,7 +55,7 @@ namespace PromoPool.ArtistAPI.UnitTests.Controllers
                 .Setup(s => s.GetArtistByIdAsync(It.IsAny<string>()))
                 .Returns(Task.FromResult(artist));
 
-            var retval = _artistController.GetArtistByIdAsync(id);
+            var retval = await _artistController.GetArtistByIdAsync(id);
 
             Assert.IsNotNull(retval);
         }

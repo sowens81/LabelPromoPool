@@ -18,11 +18,23 @@ namespace PromoPool.ArtistAPI.Services.Implementations
 
             var database = client.GetDatabase(settings.DatabaseName);
             _collection = database.GetCollection<Artist>(settings.CollectionName);
+
+            // I need to build out an index that enables case insenseitive text searches of mongdb.
+
         }
 
         public async Task<IEnumerable<Artist>> FindAllArtistsAsync()
         {
             return await _collection.Find(p => true)?.ToListAsync();
+        }
+
+        public async Task<IEnumerable<Artist>> FindAllArtistsByNameAsync(string artistName)
+        {
+            
+            var query = Builders<Artist>.Filter.Eq(x => x.Name, artistName);
+            return await _collection.Find(query)?.ToListAsync();
+            
+            // I need to replace this method to perform a case insensitve search for the artistname and return a set of records.
         }
 
         public async Task<Artist> FindArtistByIdAsync(Guid id)
@@ -39,10 +51,17 @@ namespace PromoPool.ArtistAPI.Services.Implementations
 
         public async Task<bool> DeleteOneArtistAsync(Guid id)
         {
-            var query = Builders<Artist>.Filter.Where(r => r.Id == id);
+            var query = Builders<Artist>.Filter.Where(x => x.Id == id);
             var result = await _collection.DeleteOneAsync(query);
             return await Task.FromResult(result.DeletedCount == 1);
             
+        }
+
+        public async Task<bool> DeleteAllArtistsAsync()
+        {
+            var query = Builders<Artist>.Filter.Where(x => true);
+            var result = await _collection.DeleteManyAsync(query);
+            return await Task.FromResult(result.DeletedCount > 0);
         }
 
     }
