@@ -21,5 +21,8 @@ namespace PromoPool.ArtistAPI.Models
         [Required(ErrorMessage = "Artist SoundCloud URL is required!")]
         [Url]
         public string SoundCloudUrl { get; set; }
+
+        [Required(ErrorMessage = "Artist Published state is required!")]
+        public bool Published { get; set; }
     }
 }

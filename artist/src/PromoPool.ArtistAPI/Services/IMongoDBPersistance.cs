@@ -13,6 +13,7 @@ namespace PromoPool.ArtistAPI.Services
         Task<string> InsertOneArtistAsync(Artist artist);
         Task<bool> DeleteOneArtistAsync(Guid id);
         Task<bool> DeleteAllArtistsAsync();
+        Task<Artist> UpdateArtistByIdAsync(Guid id, Artist artist);
     }
 
 }

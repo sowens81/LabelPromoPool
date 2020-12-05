@@ -2,11 +2,10 @@ import React, {Component} from "react";
 import { Switch, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-
-
 import AddArtist from "./components/Add-Artist.component";
 import Artist from "./components/Artist.component";
 import ArtistsList from "./components/Artists-List.component";
+import LoginButton from "./components/LoginButton-component";
 
 class App extends Component {
   render() {
@@ -28,12 +27,13 @@ class App extends Component {
               </Link>
             </li>
           </div>
+          <LoginButton className="" >Login</LoginButton>
         </nav>
 
         <div className="container mt-3">
           <Switch>
-            <Route exact path={["/", "/artists"]} component={Artists-List} />
-            <Route exact path="/add" component={Add-Artist} />
+            <Route exact path={["/", "/artists"]} component={ArtistsList} />
+            <Route exact path="/add" component={AddArtist} />
             <Route path="/artists/:id" component={Artist} />
           </Switch>
         </div>

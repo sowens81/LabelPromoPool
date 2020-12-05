@@ -70,6 +70,31 @@ namespace PromoPool.ArtistAPI.Managers.Implementations
             return artistId;
         }
 
+        public async Task<Artist> UpdateArtistAsync(string id, UpdateArtist updateArtist)
+        {
+            var artist = await mongoDBPersistance.FindArtistByIdAsync(Guid.Parse(id));
+
+            if (artist == null)
+            {
+                return null;
+            }
+
+            artist.Name = updateArtist.Name;
+            artist.ProfilePictureURL = updateArtist.ProfilePictureURL;
+            artist.BeatportUrl = updateArtist.BeatportUrl;
+            artist.SoundCloudUrl = updateArtist.SoundCloudUrl;
+            artist.Published = updateArtist.Published;
+
+            var updatedArtist = await mongoDBPersistance.UpdateArtistByIdAsync(Guid.Parse(id), artist);
+
+            if (updatedArtist == null)
+            {
+                return null;
+            }
+
+            return updatedArtist;
+        }
+
         public async Task<bool> DeleteArtistByIdAsync(string id)
         {
            var deleteSuccessful = await mongoDBPersistance.DeleteOneArtistAsync(Guid.Parse(id));

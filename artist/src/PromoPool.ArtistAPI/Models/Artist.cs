@@ -25,5 +25,6 @@ namespace PromoPool.ArtistAPI.Models
         public string SoundCloudUrl { get; set; }
         
         public List<Label> Labels { get; set; }
+        public bool Published { get; set; }
     }
 }

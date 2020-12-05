@@ -1,6 +1,6 @@
 import http from "../http-common";
 
-class TutorialDataService {
+class ArtistDataService {
   getAll() {
     return http.get("/artist");
   }
@@ -18,14 +18,14 @@ class TutorialDataService {
   }
 
   delete(id) {
-    return http.delete(`/arist/${id}`);
+    return http.delete(`/artist/${id}`);
   }
 
   deleteAll() {
     return http.delete(`/artist`);
   }
 
-  findByTitle(title) {
+  findByName(name) {
     return http.get(`/artist?artistname=${name}`);
   }
 }

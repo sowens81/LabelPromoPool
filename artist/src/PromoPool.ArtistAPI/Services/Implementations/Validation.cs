@@ -67,5 +67,24 @@ namespace PromoPool.ArtistAPI.Services.Implementations
             };
 
         }
+
+        public ValidationMessage ValidateUpdateArtistModel(UpdateArtist updateArtist)
+        {
+            if (updateArtist == null)
+            {
+                return new ValidationMessage()
+                {
+                    resultValid = false,
+                    message = "Artist Model not provided!"
+                };
+
+            }
+
+            return new ValidationMessage()
+            {
+                resultValid = true,
+            };
+
+        }
     }
 }

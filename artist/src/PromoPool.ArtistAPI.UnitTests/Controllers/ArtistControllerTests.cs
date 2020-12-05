@@ -30,18 +30,20 @@ namespace PromoPool.ArtistAPI.UnitTests.Controllers
         }
 
         [TestMethod]
-        [ExpectedException(typeof(MissingIdException))]
-        public async Task GetArtistByIdAsync_Given_NullId_Should_ThrowExceptionAsync()
+        public async Task GetArtistByIdAsync_Given_NullId_Should_Return_400_BadRequestObjectResult()
         {
-            await _artistController.GetArtistByIdAsync(string.Empty);
+            var retval = await _artistController.GetArtistByIdAsync(string.Empty);
+
+            Assert.IsInstanceOfType(retval, typeof(BadRequestObjectResult));
         }
 
         [TestMethod]
-        [ExpectedException(typeof(MismatchIdException))]
-        public async Task GetArtistByIdAsync_Given_Non_Guid_Should_ThrowExceptionAsync()
+        public async Task GetArtistByIdAsync_Given_Non_Guid_Should_Return_400_BadRequestObjectResult()
         {
             string id = "abc$_123";
-            await _artistController.GetArtistByIdAsync(id);
+            var retval = await _artistController.GetArtistByIdAsync(id);
+
+            Assert.IsInstanceOfType(retval, typeof(BadRequestObjectResult));
         }
 
         [TestMethod]
@@ -92,11 +94,13 @@ namespace PromoPool.ArtistAPI.UnitTests.Controllers
                 new Artist()
             };
 
+            string artistName = null;
+
             artistManager
                 .Setup(s => s.GetAllArtistsAsync())
                 .Returns(Task.FromResult(artists));
 
-            var retval = await _artistController.GetArtistsAsync() as OkObjectResult;
+            var retval = await _artistController.GetArtistsAsync(artistName) as OkObjectResult;
 
             Assert.IsNotNull(retval.Value);
         }
@@ -111,11 +115,13 @@ namespace PromoPool.ArtistAPI.UnitTests.Controllers
                 new Artist()
             };
 
+            string artistName = null;
+
             artistManager
                 .Setup(s => s.GetAllArtistsAsync())
                 .Returns(Task.FromResult(artists));
 
-            var retval = await _artistController.GetArtistsAsync() as OkObjectResult;
+            var retval = await _artistController.GetArtistsAsync(artistName) as OkObjectResult;
 
             Assert.IsNotNull(retval.Value);
             Assert.AreEqual(200, retval.StatusCode);
@@ -129,18 +135,21 @@ namespace PromoPool.ArtistAPI.UnitTests.Controllers
             artistManager
                 .Setup(s => s.GetAllArtistsAsync())
                 .Returns(Task.FromResult(artists));
+            
+            string artistName = null;
 
-            var retval = await _artistController.GetArtistsAsync() as NotFoundResult;
+            var retval = await _artistController.GetArtistsAsync(artistName) as NotFoundResult;
 
 
             Assert.AreEqual(404, retval.StatusCode);
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
-        public async Task AddArtistAsync_Given_Null_NewArtist_Should_ThrowException()
+        public async Task AddArtistAsync_Given_Null_NewArtist_Should_Return_400_BadRequestObjectResult()
         {
-            await _artistController.AddArtistAsync((NewArtist)null);
+            var retval = await _artistController.AddArtistAsync((NewArtist)null);
+
+            Assert.IsInstanceOfType(retval, typeof(BadRequestObjectResult));
         }
 
         [TestMethod]
@@ -151,7 +160,8 @@ namespace PromoPool.ArtistAPI.UnitTests.Controllers
                 Name = "Primal Nature",
                 ProfilePictureURL = "http://www.primalnature.com/artist.png",
                 BeatportUrl = "http://www.beatport.com/primalnature/",
-                SoundCloudUrl = "http://www.soundcloud.com/primalnature/"
+                SoundCloudUrl = "http://www.soundcloud.com/primalnature/",
+                Published = true
             };
 
             var id = Guid.NewGuid().ToString();
@@ -167,7 +177,7 @@ namespace PromoPool.ArtistAPI.UnitTests.Controllers
         }
 
         [TestMethod]
-        public async Task AddArtist_Given_NewArtist_ModelState_Not_Valid_Return_400_BadRequest()
+        public async Task AddArtist_Given_NewArtist_ModelState_Not_Valid_Return_400_BadRequestObjectResult()
         {
             var artist = new NewArtist()
             {
@@ -179,11 +189,11 @@ namespace PromoPool.ArtistAPI.UnitTests.Controllers
 
             var retval = await _artistController.AddArtistAsync(artist);
 
-            Assert.IsInstanceOfType(retval, typeof(BadRequestResult));
+            Assert.IsInstanceOfType(retval, typeof(BadRequestObjectResult));
         }
 
         [TestMethod]
-        public async Task AddArtist_Given_NewArtist_Not_Added_Return_400_BadRequestResult()
+        public async Task AddArtist_Given_NewArtist_Not_Added_Return_400_BadRequestObjectResult()
         {
             var artist = new NewArtist()
             {
@@ -199,10 +209,9 @@ namespace PromoPool.ArtistAPI.UnitTests.Controllers
                 .Setup(s => s.InsertArtistAsync(It.IsAny<NewArtist>()))
                 .Returns(Task.FromResult((string)null));
 
-            var retval = await _artistController.AddArtistAsync(artist) as BadRequestResult;
+            var retval = await _artistController.AddArtistAsync(artist);
 
-            Assert.IsNotNull(retval);
-            Assert.AreEqual(400, retval.StatusCode);
+            Assert.IsInstanceOfType(retval, typeof(BadRequestObjectResult));
         }
     }
 }

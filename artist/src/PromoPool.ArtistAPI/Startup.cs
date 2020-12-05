@@ -22,6 +22,7 @@ namespace PromoPool.ArtistAPI
 {
     public class Startup
     {
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -37,7 +38,7 @@ namespace PromoPool.ArtistAPI
                     builder =>
                     {
                         builder
-                        .WithOrigins("http://localhost:3000")
+                        .WithOrigins("http://localhost:3000", "http://localhost:8081" )
                         .AllowAnyMethod()
                         .AllowAnyHeader()
                         .AllowCredentials();

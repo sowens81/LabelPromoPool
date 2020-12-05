@@ -126,6 +126,50 @@ namespace PromoPool.ArtistAPI.Controllers
         }
 
         [ApiVersion("1.0")]
+        [HttpPut("{id}")]
+        [ProducesResponseType(typeof(string), StatusCodes.Status202Accepted)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [Produces("application/json")]
+        public async Task<IActionResult> UpdateArtistByIdAsync(string id, UpdateArtist updateArtist)
+        {
+            logger.LogInformation($"Update Artist Body: {updateArtist} - Resource Requested.");
+
+            var validateId = validation.ValidateId(id);
+
+
+            if (validateId.resultValid)
+            {
+                var validateArtist = validation.ValidateUpdateArtistModel(updateArtist);
+
+                if (validateArtist.resultValid)
+                {
+                    if (ModelState.IsValid)
+                    {
+                        var updatedArtist = await artistManager.UpdateArtistAsync(id, updateArtist);
+
+                        if (updatedArtist != null)
+                        {
+                            return Ok(updatedArtist);
+                        }
+
+                        return NotFound();
+                    }
+                    else
+                    {
+                        return BadRequest(ModelState);
+                    }
+                }
+
+                return BadRequest(validateArtist.message);
+            }
+
+            return BadRequest(validateId.message);
+
+
+        }
+
+        [ApiVersion("1.0")]
         [HttpDelete("{id}")]
         [ProducesResponseType(typeof(string), StatusCodes.Status202Accepted)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

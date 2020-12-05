@@ -6,8 +6,8 @@ export default class AddArtist extends Component {
         super(props);
         this.onChangeName = this.onChangeName.bind(this);
         this.onChangeProfilePictureURL = this.onChangeProfilePictureURL.bind(this);
-        this.onChangeBeatportURL = this.onChangeBeatportURL.bind(this);
-        this.onChangeSoundCloudURL = this.onChangeSoundCloudURL.bind(this);
+        this.onChangeBeatportUrl = this.onChangeBeatportUrl.bind(this);
+        this.onChangeSoundCloudUrl = this.onChangeSoundCloudUrl.bind(this);
         this.saveArtist = this.saveArtist.bind(this);
         this.newArtist = this.newArtist.bind(this);
 
@@ -32,13 +32,13 @@ export default class AddArtist extends Component {
         });
     }
 
-    onChangeBeatportURL(e) {
+    onChangeBeatportUrl(e) {
         this.setState({
             beatportUrl: e.target.value
         });
     }
 
-    onChangeSoundCloudURL(e) {
+    onChangeSoundCloudUrl(e) {
         this.setState({
             soundCloudUrl: e.target.value
         });
@@ -52,23 +52,23 @@ export default class AddArtist extends Component {
             soundCloudUrl: this.state.soundCloudUrl 
         };
     
-        ArtistDataService.create(data)
-        .then(response => {
-            this.setState({
-            id: response.data.id,
-            name: response.data.name,
-            profilePictureURL: response.data.profilePictureURL,
-            beatportUrl: response.data.beatportUrl,
-            soundCloudUrl: response.data.soundCloudUrl,
-            published: response.data.published,
+    ArtistDataService.create(data)
+      .then(response => {
+          this.setState({
+          id: response.data.id,
+          name: response.data.name,
+          profilePictureURL: response.data.profilePictureURL,
+          beatportUrl: response.data.beatportUrl,
+          soundCloudUrl: response.data.soundCloudUrl,
+          published: response.data.published,
 
-            submitted: true
-            });
-            console.log(response.data);
-        })
-        .catch(e => {
-            console.log(e);
-        });
+          submitted: true
+          });
+          console.log(response.data);
+      })
+      .catch(e => {
+          console.log(e);
+      });
     }
 
     newArtist() {
@@ -90,7 +90,7 @@ export default class AddArtist extends Component {
             {this.state.submitted ? (
               <div>
                 <h4>You submitted successfully!</h4>
-                <button className="btn btn-success" onClick={this.newTutorial}>
+                <button className="btn btn-success" onClick={this.newArtist}>
                   Add
                 </button>
               </div>
@@ -114,16 +114,15 @@ export default class AddArtist extends Component {
                   <input
                     type="text"
                     className="form-control"
-                    id="description"
+                    id="profilePictureURL"
                     required
                     value={this.state.profilePictureURL}
                     onChange={this.onChangeProfilePictureURL}
-                    name="description"
+                    name="profilePictureURL"
                   />
                 </div>
 
                 
-
                 <div className="form-group">
                   <label htmlFor="beatportUrl">Beatport URL</label>
                   <input
@@ -150,7 +149,7 @@ export default class AddArtist extends Component {
                   />
                 </div>
     
-                <button onClick={this.saveTutorial} className="btn btn-success">
+                <button onClick={this.saveArtist} className="btn btn-success">
                   Submit
                 </button>
               </div>
