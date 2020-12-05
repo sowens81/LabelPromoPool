@@ -32,9 +32,45 @@ namespace PromoPool.ArtistAPI.Services.Implementations
             };
         }
 
+        public ValidationMessage ValidateQueryString(string queryString, string queryStringPropertyName)
+        {
+            if (string.IsNullOrEmpty(queryString))
+            {
+                return new ValidationMessage()
+                {
+                    resultValid = false,
+                    message = $"queryString property: {queryStringPropertyName}, is null or empty!"
+                };
+            }
+
+            return new ValidationMessage()
+            {
+                resultValid = true
+            };
+        }
+
         public ValidationMessage ValidateNewArtistModel(NewArtist newArtist)
         {
             if (newArtist == null)
+            {
+                return new ValidationMessage()
+                {
+                    resultValid = false,
+                    message = "Artist Model not provided!"
+                };
+
+            }
+
+            return new ValidationMessage()
+            {
+                resultValid = true,
+            };
+
+        }
+
+        public ValidationMessage ValidateUpdateArtistModel(UpdateArtist updateArtist)
+        {
+            if (updateArtist == null)
             {
                 return new ValidationMessage()
                 {

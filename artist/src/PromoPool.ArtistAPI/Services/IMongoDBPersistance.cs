@@ -8,9 +8,12 @@ namespace PromoPool.ArtistAPI.Services
     public interface IMongoDBPersistance
     {
         Task<IEnumerable<Artist>> FindAllArtistsAsync();
+        Task<IEnumerable<Artist>> FindAllArtistsByNameAsync(string artistName);
         Task<Artist>  FindArtistByIdAsync(Guid id);
         Task<string> InsertOneArtistAsync(Artist artist);
         Task<bool> DeleteOneArtistAsync(Guid id);
+        Task<bool> DeleteAllArtistsAsync();
+        Task<Artist> UpdateArtistByIdAsync(Guid id, Artist artist);
     }
 
 }
